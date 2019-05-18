@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorMask">#60000000</color>
+    <color name="colorResultsMask">#c0000000</color>
+    <color name="colorFrame">#00000000</color>
+    <color name="colorCorners">#ffffffff</color>
+
+    <color name="textColorWhite">#ffffff</color>
+
+    <color name="transparentWhite">#c0ffffff</color>
+    <color name="transparentWhiteBorder">#60ffffff</color>
+</resources>

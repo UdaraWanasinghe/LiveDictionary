@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "768431670519",
+    "firebase_url": "https://livedictionary-946f4.firebaseio.com",
+    "project_id": "livedictionary-946f4",
+    "storage_bucket": "livedictionary-946f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768431670519:android:2d5f70b3d3086270",
+        "android_client_info": {
+          "package_name": "com.udara.developer.livedictionary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768431670519-7d6jutlhkp54mfpeegnm2m23r1u9pf0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQnls4oPRbA7cf6mk1nhAf3PmoufYBxEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768431670519-7d6jutlhkp54mfpeegnm2m23r1u9pf0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
