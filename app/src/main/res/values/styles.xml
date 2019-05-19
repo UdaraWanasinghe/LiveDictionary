@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowFullscreen">true</item>
         <item name="fontFamily">monospace</item>
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
 </resources>

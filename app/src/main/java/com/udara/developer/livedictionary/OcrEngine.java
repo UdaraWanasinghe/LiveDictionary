@@ -1,32 +1,44 @@
 package com.udara.developer.livedictionary;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-public class OcrEngine {
+class OcrEngine {
     private Context context;
     private TessBaseAPI baseAPI;
     private TessBaseAPI.ProgressNotifier progressNotifier;
+    private OcrEngineListener ocrEngineListener;
 
-    public OcrEngine(Context context) {
+    OcrEngine(Context context, TessBaseAPI.ProgressNotifier progressNotifier, OcrEngineListener ocrEngineListener) {
         this.context = context;
+        this.progressNotifier = progressNotifier;
+        this.ocrEngineListener = ocrEngineListener;
         initEngine();
     }
 
-    private boolean initEngine() {
-        baseAPI = new TessBaseAPI();
-        baseAPI.init(context.getExternalCacheDir().getAbsolutePath(), "eng");
-        return true;
+    private void initEngine() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ocrEngineListener.onInitStart();
+                baseAPI = new TessBaseAPI(progressNotifier);
+                if (context.getExternalCacheDir() == null) {
+                    ocrEngineListener.onInitError();
+                    return;
+                }
+                baseAPI.init(context.getExternalCacheDir().getAbsolutePath(), "eng");
+                ocrEngineListener.onInitComplete();
+            }
+        }).start();
+    }
+
+    interface OcrEngineListener {
+        void onInitStart();
+
+        void onInitComplete();
+
+        void onInitError();
     }
 
 }

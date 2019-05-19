@@ -25,7 +25,7 @@ class FileExtractor {
      * @return true if data files are available, else false
      */
     boolean checkFiles() {
-        File file1 = new File(context.getExternalCacheDir(), "/langdata");
+        File file1 = new File(context.getExternalCacheDir(), "/langdata.ser");
         File file2 = new File(context.getExternalCacheDir(), "/tessdata/eng.traineddata");
         return file1.exists() && file2.exists();
     }
@@ -48,7 +48,7 @@ class FileExtractor {
                     InputStream is = context.getAssets().open("data.zip");
                     ZipInputStream zis = new ZipInputStream(new BufferedInputStream(is));
                     ZipEntry ze;
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[4096];
                     int count;
 
                     while ((ze = zis.getNextEntry()) != null) {
@@ -90,12 +90,12 @@ class FileExtractor {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                fileExtractListener.onComplete(isSuccess, message);
+                fileExtractListener.onExtractComplete(isSuccess, message);
             }
         });
     }
 
     interface FileExtractListener {
-        void onComplete(boolean isSuccess, String message);
+        void onExtractComplete(boolean isSuccess, String message);
     }
 }
